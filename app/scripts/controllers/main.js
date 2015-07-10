@@ -1,8 +1,15 @@
 'use strict';
 
 
-angular.module('angularNotesApp')
-  .controller('MainCtrl', function ($scope, localStorageService) {
+var notesModule = angular.module('angularNotesApp');
+
+notesModule.config(['markedProvider', function(markedProvider) {
+      markedProvider.setOptions({gfm: true});
+    }]);
+
+
+notesModule
+  .controller('MainCtrl', function ($scope, localStorageService, marked) {
 
     var notesInStore = localStorageService.get('notes');
 
@@ -16,6 +23,8 @@ angular.module('angularNotesApp')
 
     $scope.addNote = function() {
       var note = {
+        titlemark : marked($scope.note.title),
+        bodymark : marked($scope.note.body),
         title : $scope.note.title,
         body : $scope.note.body
       };
@@ -26,6 +35,8 @@ angular.module('angularNotesApp')
 
     $scope.edit = function () {
       var note = {
+        titlemark : marked($scope.notes[$scope.selectedNoteIndex].title),
+        bodymark : marked($scope.notes[$scope.selectedNoteIndex].body),
         title : $scope.notes[$scope.selectedNoteIndex].title,
         body : $scope.notes[$scope.selectedNoteIndex].body
       }
