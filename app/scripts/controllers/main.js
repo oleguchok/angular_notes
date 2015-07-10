@@ -16,6 +16,7 @@ notesModule
     $scope.notes = notesInStore || [];
     $scope.visibleAddForm = true;
     $scope.selectedNoteIndex = -1;
+    $scope.visibleNotifyForm = true;
 
     $scope.$watch('notes', function() {
       localStorageService.set('notes', $scope.notes);
@@ -32,6 +33,7 @@ notesModule
       $scope.note.title = "";
       $scope.note.body = "";
       $scope.visibleAddForm = !$scope.visibleAddForm;
+      customNotify('Note was added', 10000, 'right');
     };
 
     $scope.edit = function () {
@@ -43,15 +45,33 @@ notesModule
       }
       $scope.notes.splice($scope.selectedNoteIndex, 1, note);
       $scope.selectedNoteIndex = -1;
+      customNotify('Note was edited', 10000, 'right');
     };
 
     $scope.removeNote = function (index) {
       $scope.notes.splice(index, 1);
+      customNotify('Note was removed', 10000, 'right');
     };
 
     $scope.cancel = function () {
       $scope.selectedNoteIndex = -1;
     };
+
+    var customNotify = function (message, duration, position) {
+      notify({
+        message : message,
+        duration : duration,
+        position : position
+      });
+    };
+
+    $scope.addNotify = function() {
+      customNotify($scope.notify.message, $scope.notify.duration*1000,'top');
+      $scope.notify.message = "";
+      $scope.notify.duration = "";
+      $scope.visibleNotifyForm = !$scope.visibleNotifyForm;
+    };
+
 
     $scope.toggle = function() {
       $scope.visibleAddForm = !$scope.visibleAddForm;
@@ -61,6 +81,10 @@ notesModule
 
     $scope.enableEditor = function (index) {
       $scope.selectedNoteIndex = index;
+    };
+
+    $scope.showNotifyAdding = function() {
+      $scope.visibleNotifyForm = !$scope.visibleNotifyForm;
     };
 
     $scope.isIndex = function (index) {

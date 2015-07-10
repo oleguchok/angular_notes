@@ -26,6 +26,22 @@
     </div>
   </form>
 
+  <form role="form" class="container" style="width:80%" ng-hide="visibleNotifyForm" ng-submit="addNotify()">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span>Add Notify</span>
+      </div>
+      <div class="panel-body ">
+        <input type="text" ng-model="notify.message" placeholder="Enter your message here" class="form-control">
+        <input type="text" ng-model="notify.duration" placeholder="Enter your notify duration(in sec)" class="form-control">
+      </div>
+      <div class="panel-footer">
+          <input type="submit" class="btn btn-primary" value="OK">
+      </div>
+    </div>
+  </form>
+
+
   <div ui-sortable ng-model="notes">
     <div class="container" style="width:80%" ng-repeat="note in notes" style="padding:5px 10px;cursor:move;">
       <div class="panel panel-primary">

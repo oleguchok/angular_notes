@@ -25,9 +25,6 @@ body {
     top: -5px;
 }
 
-.input-group {
-  container: 'body';
-}
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
