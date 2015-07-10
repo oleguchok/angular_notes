@@ -8,6 +8,7 @@ angular.module('angularNotesApp')
 
     $scope.notes = notesInStore || [];
     $scope.visibleAddForm = true;
+    $scope.selectedNoteIndex = -1;
 
     $scope.$watch('notes', function() {
       localStorageService.set('notes', $scope.notes);
@@ -27,10 +28,22 @@ angular.module('angularNotesApp')
       $scope.notes.splice(index, 1);
     };
 
+    $scope.cancel = function () {
+      $scope.selectedNoteIndex = -1;
+    };
+
     $scope.toggle = function() {
       $scope.visibleAddForm = !$scope.visibleAddForm;
       $scope.note.title = "";
       $scope.note.body = "";
+    };
+
+    $scope.enableEditor = function (index) {
+      $scope.selectedNoteIndex = index;
+    };
+
+    $scope.isIndex = function (index) {
+      return $scope.selectedNoteIndex == index;
     };
 
     $scope.clear = function() {
