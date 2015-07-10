@@ -24,6 +24,15 @@ angular.module('angularNotesApp')
       $scope.note.body = "";
     };
 
+    $scope.edit = function () {
+      var note = {
+        title : $scope.notes[$scope.selectedNoteIndex].title,
+        body : $scope.notes[$scope.selectedNoteIndex].body
+      }
+      $scope.notes.splice($scope.selectedNoteIndex, 1, note);
+      $scope.selectedNoteIndex = -1;
+    };
+
     $scope.removeNote = function (index) {
       $scope.notes.splice(index, 1);
     };
