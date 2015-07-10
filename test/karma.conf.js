@@ -36,6 +36,7 @@ module.exports = function(config) {
       'bower_components/angular-local-storage/dist/angular-local-storage.js',
       'bower_components/marked/lib/marked.js',
       'bower_components/angular-marked/angular-marked.js',
+      'bower_components/angular-notify/dist/angular-notify.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

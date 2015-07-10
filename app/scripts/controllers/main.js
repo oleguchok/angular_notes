@@ -9,7 +9,7 @@ notesModule.config(['markedProvider', function(markedProvider) {
 
 
 notesModule
-  .controller('MainCtrl', function ($scope, localStorageService, marked) {
+  .controller('MainCtrl', function ($scope, localStorageService, marked, notify) {
 
     var notesInStore = localStorageService.get('notes');
 

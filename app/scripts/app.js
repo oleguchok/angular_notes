@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'ui.sortable',
     'LocalStorageModule',
-    'hc.marked'
+    'hc.marked',
+    'cgNotify'
   ])
   .config(['localStorageServiceProvider', function(localStorageServiceProvider){
     localStorageServiceProvider.setPrefix('ls');
