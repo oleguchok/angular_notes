@@ -31,6 +31,7 @@ notesModule
       $scope.notes.push(note);
       $scope.note.title = "";
       $scope.note.body = "";
+      $scope.visibleAddForm = !$scope.visibleAddForm;
     };
 
     $scope.edit = function () {
