@@ -1,5 +1,38 @@
 <div class="container">
 
-  
+  <h2>
+    <button type="button" class="glyphicon-button pull-left" ng-click="toggle()">
+      <span class="glyphicon glyphicon-plus"></span>
+    </button>
+    Notes
+  </h2>
+
+  <form role="form" class="container" style="width:80%" ng-hide="visibleAddForm" ng-submit="addNote()">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+          <input type="text" ng-model="note.title" placeholder="Put here your title" class="form-control">
+      </div>
+      <div class="panel-body">
+          <textarea ng-model="note.body" placeholder="Put here your note" class="form-control" rows="5" cols="20"></textarea>
+      </div>
+      <div class="panel-footer">
+          <input type="submit" class="btn btn-primary" value="Save">
+          <input type="button" class="btn btn-default" value="Clear" ng-click="clear()">
+      </div>
+    </div>
+  </form>
+
+  <div ui-sortable ng-model="notes">
+    <div class="container" style="width:80%" ng-repeat="note in notes" style="padding:5px 10px;cursor:move;">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+        </div>
+        <div class="panel-body">
+        </div>
+        <div class="panel-footer">
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
