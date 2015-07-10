@@ -23,6 +23,10 @@ angular.module('angularNotesApp')
       $scope.note.body = "";
     };
 
+    $scope.removeNote = function (index) {
+      $scope.notes.splice(index, 1);
+    };
+
     $scope.toggle = function() {
       $scope.visibleAddForm = !$scope.visibleAddForm;
       $scope.note.title = "";
