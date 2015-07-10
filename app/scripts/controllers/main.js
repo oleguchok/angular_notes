@@ -1,14 +1,8 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name angularNotesApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the angularNotesApp
- */
+
 angular.module('angularNotesApp')
-  .controller('MainCtrl', function () {
+  .controller('MainCtrl', function (localStorageService) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
